@@ -1,0 +1,49 @@
+2018/06/18 16:01:09   
+length of arg: 0
+-- \\EMSCR01\ReceptyN\TEXT\棚卸CSV2018*.CSV --
+   -- target filename:\\EMSCR01\ReceptyN\TEXT\棚卸CSV20180616.CSV
+----------------------------------------
+ Rackdata filename \\EMSCR01\ReceptyN\TEXT\棚卸CSV20180616.CSV
+        rack            ...                               drugcode
+0     棚上-01-            ...              アーガメイト２０％ゼリー２５ｇ　２０％２５ｇ25g
+13     B-02-            ...                         アーチスト錠２．５ｍｇＰＴＰ
+22  分包機-002-            ...                          アーチスト錠２．５ｍｇバラ
+24     B-02-            ...                        アーチスト錠１．２５ｍｇＰＴＰ
+27     B-02-            ...                          アーチスト錠１０ｍｇＰＴＰ
+
+[5 rows x 4 columns]
+-- \\EMSCR01\ReceptyN\TEXT\在庫一覧20180618*.CSV --
+   -- target filename:\\EMSCR01\ReceptyN\TEXT\在庫一覧20180618.CSV
+   drcode            ...                               drugcode
+0  221645            ...              アーガメイト２０％ゼリー２５ｇ　２０％２５ｇ25g
+1  217051            ...                         アーチスト錠２．５ｍｇＰＴＰ
+2  217050            ...                        アーチスト錠１．２５ｍｇＰＴＰ
+3  211241            ...                          アーチスト錠１０ｍｇＰＴＰ
+4  400008            ...                   アイドロイチン１％点眼液　１％５ｍＬ1瓶
+
+[5 rows x 8 columns]
+-- \\EMSCR01\ReceptyN\TEXT\出庫20180618*.csv --
+   -- target filename:\\EMSCR01\ReceptyN\TEXT\出庫201806181420.csv
+     outdate            ...                               drugcode
+0 2018-06-16            ...              アーガメイト２０％ゼリー２５ｇ　２０％２５ｇ25g
+1 2018-06-16            ...                          アーチスト錠１０ｍｇＰＴＰ
+2 2018-06-18            ...                          アイミクス配合錠ＨＤＰＴＰ
+3 2018-06-16            ...                           アジルバ錠２０ｍｇＰＴＰ
+4 2018-06-18            ...                         アスパラ‐ＣＡ錠２００ＰＴＰ
+
+[5 rows x 10 columns]
+-- \\EMSCR01\ReceptyN\TEXT\出庫20180618*.csv --
+   -- target filename:\\EMSCR01\ReceptyN\TEXT\出庫201806181420.csv
+      newcode            ...                               drugcode
+0  2216453168            ...              アーガメイト２０％ゼリー２５ｇ　２０％２５ｇ25g
+1    21124135            ...                          アーチスト錠１０ｍｇＰＴＰ
+2  2241204609            ...                          アイミクス配合錠ＨＤＰＴＰ
+3  2236064028            ...                           アジルバ錠２０ｍｇＰＴＰ
+4    20018194            ...                         アスパラ‐ＣＡ錠２００ＰＴＰ
+
+[5 rows x 7 columns]
+東武練馬ｸﾘﾆｯｸ
+-- \\EMSCR01\ReceptyN\TEXT\出庫20180618*.csv --
+   -- target filename:\\EMSCR01\ReceptyN\TEXT\出庫201806181420.csv
+-- \\EMSCR01\ReceptyN\TEXT\出庫20180618*.csv --
+   -- target filename:\\EMSCR01\ReceptyN\TEXT\出庫201806181420.csv
