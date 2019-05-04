@@ -29,7 +29,7 @@ def process(argv):
     for arg in argv:
         print("arg:",arg)
 
-
+    print("YYYYMMDD", YYYYMMDD)
     # main directory 
     #mainDir = "/home/ec2-user/s3/recepty-text"
     #resultDir = "/home/ec2-user/s3/recepty-text/result"
