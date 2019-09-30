@@ -30,11 +30,8 @@ class OutputDataClass(MasterDataClass):
         with codecs.open(self.first, "r", "Shift-JIS", "ignore") as file:
             df_out = pd.read_csv(file)
 
-        # due to TAX increase from 8% to 10%
-        # 1 new field indicating new TAX category was added by EM systems
-        #  
-        df_out.columns = ["0","outdate","drcode","housou","standard","5","num","7","8","instname","10","drugname","12","yjcode","14","15","16","17","18"]    
-        df_out = df_out.drop(["0","5","7","8","10","12","14","15","16","17","18"],axis=1)
+        df_out.columns = ["0","outdate","drcode","housou","standard","5","num","7","8","instname","10","drugname","12","yjcode","14","15","16","17"]    
+        df_out = df_out.drop(["0","5","7","8","10","12","14","15","16","17"],axis=1)
         #print "column name after dropping unnecessary columns:\n", df_out.columns
     
         #df_out["standard"] = df_out.ix[:,3].str.decode('cp932')
