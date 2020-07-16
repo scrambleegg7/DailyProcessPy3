@@ -112,14 +112,23 @@ class OutputDataClass(MasterDataClass):
 
         df_merge = pd.merge(self.df_sum,df_rack,on='drugcode',how='left')
         
-        cols = ["rack","drugname","standard","final"]
-        df_merge = df_merge.ix[:,cols]
-        df_merge = df_merge.sort_values(by=["rack","drugname"])
 
         if self.tobuSw == "bu":
+
+            print("tab calculation...")
+            cols = ["rack","drugname","standard","final", "num"]
+            df_merge = df_merge.ix[:,cols]
+            df_merge = df_merge.sort_values(by=["rack","drugname"])
+
             #df_merge = df_merge[  df_merge["rack"] == self.packmachine ] 
             df_merge = df_merge[  df_merge["rack"].str.contains(self.packmachine,na=False) ] 
-            
+
+        else:
+
+            cols = ["rack","drugname","standard","final"]
+            df_merge = df_merge.ix[:,cols]
+            df_merge = df_merge.sort_values(by=["rack","drugname"])
+
 
         return df_merge
         

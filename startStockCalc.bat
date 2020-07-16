@@ -19,6 +19,9 @@ c:\ProgramData\Anaconda3\python.exe l:\\ipython\\DailyprocessPy3\\stockCalc.py >
 
 c:\ProgramData\Anaconda3\python.exe l:\\ipython\\DailyprocessPy3\\DeadStock.py >> %LOGPATH% 2>&1
 
+
+REM pause
+
 REM ====== StockCalculation data loader
 
 
