@@ -34,10 +34,10 @@ class RackDataClass(MasterDataClass):
                         
             df_rack = df_rack.drop(["0","1","2","3","4","5","6","7",
                                 "8","9","10"],axis=1)
-            #df_rack["standard"] = df_rack.ix[:,2].str.decode('cp932')
-            #df_rack["drugname"] = df_rack.ix[:,1].str.decode('cp932')
-            #df_rack["rack"] = df_rack.ix[:,0].str.decode('cp932')
-            df_rack["drugcode"]= df_rack.ix[:,"drugname"] + df_rack.ix[:,"standard"]
+            #df_rack["standard"] = df_rack.loc[:,2].str.decode('cp932')
+            #df_rack["drugname"] = df_rack.loc[:,1].str.decode('cp932')
+            #df_rack["rack"] = df_rack.loc[:,0].str.decode('cp932')
+            df_rack["drugcode"]= df_rack.loc[:,"drugname"] + df_rack.loc[:,"standard"]
             
             #df_rack = df_rack.set_index("newcode")
              
@@ -51,6 +51,6 @@ class RackDataClass(MasterDataClass):
             
     def getDrugCodeAndRackNo(self):
         cols = ["drugcode","rack","drugname","standard"]
-        return self.df_masterData.ix[:,cols]
+        return self.df_masterData.loc[:,cols]
 
 

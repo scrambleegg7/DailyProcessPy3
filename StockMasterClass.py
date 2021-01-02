@@ -31,19 +31,19 @@ class StockMasterClass(MasterDataClass):
                                 "18","19","20","21","22","23","24","25"],axis=1)
 
         #print "column name after dropping unnecessary columns:\n", df_master.columns
-        #df_master["standard"] = df_master.ix[:,"standard"].str.decode('cp932')
-        #df_master["drugname"] = df_master.ix[:,"drugname"].str.decode('cp932')
+        #df_master["standard"] = df_master.loc[:,"standard"].str.decode('cp932')
+        #df_master["drugname"] = df_master.loc[:,"drugname"].str.decode('cp932')
         #df_master["newcode"]= df_master["drugname"] + df_master["standard"]
         
-        df_master["newcode"] = df_master.ix[:,"drcode"].astype(str) + df_master.ix[:,"housou"].astype(str)
-        #df_master["newcode"] = df_master.ix[:,"newcode"].astype(np.long)
+        df_master["newcode"] = df_master.loc[:,"drcode"].astype(str) + df_master.loc[:,"housou"].astype(str)
+        #df_master["newcode"] = df_master.loc[:,"newcode"].astype(np.long)
 
 
         #print(df_master.head())
 
-        #df_master["newcode"] = df_master.ix[:,"newcode"].astype(np.int32)
+        #df_master["newcode"] = df_master.loc[:,"newcode"].astype(np.int32)
         
-        df_master["drugcode"]= df_master.ix[:,"drugname"] + df_master.ix[:,"standard"]
+        df_master["drugcode"]= df_master.loc[:,"drugname"] + df_master.loc[:,"standard"]
 
         #        
         #self.df_masterData = df_master.set_index("newcode")
@@ -55,7 +55,7 @@ class StockMasterClass(MasterDataClass):
     def getStock(self):
         
         myColumnlist = ["drugcode","newcode","stock"]
-        df_ = self.df_masterData.ix[:,myColumnlist]
+        df_ = self.df_masterData.loc[:,myColumnlist]
         return df_
 
     def merge(self,df_user,df_rack):
@@ -66,13 +66,13 @@ class StockMasterClass(MasterDataClass):
 
         df_merge['final'] = df_merge['stock'] - df_merge['num']
         
-        df_merge['drugcode'] = df_merge.ix[:,'drugname'] + df_merge.ix[:,'standard']
+        df_merge['drugcode'] = df_merge.loc[:,'drugname'] + df_merge.loc[:,'standard']
 
         df_merge = pd.merge(df_merge,df_rack,on='drugcode',how='left')
         
         
         cols = ["rack","drugname","standard","final"]
-        df_merge = df_merge.ix[:,cols]
+        df_merge = df_merge.loc[:,cols]
         df_merge = df_merge.sort_values(by=["rack","drugname"])
 
         return df_merge

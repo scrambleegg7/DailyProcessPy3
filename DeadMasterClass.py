@@ -31,17 +31,17 @@ class DeadMasterClass(MasterDataClass):
                          "LastdayOfEntry","daysSinceLastEntry","LastdayOfOut","daysSinceLastOut","14","wholesale","unit","17","18","expiry"]    
         df_master = df_master.drop(["4","14","17","18"],axis=1)
         #print "column name after dropping unnecessary columns:\n", df_master.columns
-        #df_master["standard_"] = df_master.ix[:,"standard_"].str.decode('cp932')
-        #df_master["drugname_"] = df_master.ix[:,"drugname_"].str.decode('cp932')
-        #df_master["type"] = df_master.ix[:,"type"].str.decode('cp932')
-        #df_master["unit"] = df_master.ix[:,"unit"].str.decode('cp932')
-        #df_master["wholesale"] = df_master.ix[:,"wholesale"].str.decode('cp932')
+        #df_master["standard_"] = df_master.loc[:,"standard_"].str.decode('cp932')
+        #df_master["drugname_"] = df_master.loc[:,"drugname_"].str.decode('cp932')
+        #df_master["type"] = df_master.loc[:,"type"].str.decode('cp932')
+        #df_master["unit"] = df_master.loc[:,"unit"].str.decode('cp932')
+        #df_master["wholesale"] = df_master.loc[:,"wholesale"].str.decode('cp932')
         
                 
-        df_master["newcode"] = df_master.ix[:,"drcode"].astype(str) + df_master.ix[:,"housou"].astype(str)
-        #df_master["newcode"] = df_master.ix[:,"newcode"].astype(long)
+        df_master["newcode"] = df_master.loc[:,"drcode"].astype(str) + df_master.loc[:,"housou"].astype(str)
+        #df_master["newcode"] = df_master.loc[:,"newcode"].astype(long)
         
-        df_master["drugcode"]= df_master.ix[:,"drugname_"] + df_master.ix[:,"standard_"]
+        df_master["drugcode"]= df_master.loc[:,"drugname_"] + df_master.loc[:,"standard_"]
 
         #        
         #self.df_masterData = df_master.set_index("newcode")
@@ -61,7 +61,7 @@ class DeadMasterClass(MasterDataClass):
                          "LastdayOfOut","daysSinceLastOut","wholesale","unit","expiry"]    
 
         
-        df_merge = df_merge.ix[:,cols]
+        df_merge = df_merge.loc[:,cols]
         df_merge = df_merge.sort_values(by=["LastdayOfOut"],ascending=False)
             
         return df_merge

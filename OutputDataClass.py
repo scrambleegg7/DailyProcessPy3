@@ -37,16 +37,16 @@ class OutputDataClass(MasterDataClass):
         df_out = df_out.drop(["0","5","7","8","10","12","14","15","16","17","18"],axis=1)
         #print "column name after dropping unnecessary columns:\n", df_out.columns
     
-        #df_out["standard"] = df_out.ix[:,3].str.decode('cp932')
-        #df_out["instname"] = df_out.ix[:,5].str.decode('cp932')
-        #df_out["drugname"] = df_out.ix[:,6].str.decode('cp932')
+        #df_out["standard"] = df_out.loc[:,3].str.decode('cp932')
+        #df_out["instname"] = df_out.loc[:,5].str.decode('cp932')
+        #df_out["drugname"] = df_out.loc[:,6].str.decode('cp932')
         df_out["outdate"] = pd.to_datetime(df_out["outdate"])    
         #df_out["newcode"]= df_out["drugname"] + df_out["standard"]
         
-        df_out["newcode"] = df_out.ix[:,"drcode"].astype(str) + df_out.ix[:,"housou"].astype(str) 
+        df_out["newcode"] = df_out.loc[:,"drcode"].astype(str) + df_out.loc[:,"housou"].astype(str) 
         #df_out["newcode"] = df_out["newcode"].astype(np.long)
         
-        df_out["drugcode"]= df_out.ix[:,"drugname"] + df_out.ix[:,"standard"]
+        df_out["drugcode"]= df_out.loc[:,"drugname"] + df_out.loc[:,"standard"]
         
         #
         #   self.df_masterData = df_out.set_index("newcode")
@@ -59,7 +59,7 @@ class OutputDataClass(MasterDataClass):
         
         
         cols = ["newcode","outdate","drugname","standard","instname","num","drugcode"]
-        df_ = self.df_masterData.ix[:,cols]
+        df_ = self.df_masterData.loc[:,cols]
         
 
         if self.tobuSw == "only":
@@ -117,7 +117,7 @@ class OutputDataClass(MasterDataClass):
 
             print("tab calculation...")
             cols = ["rack","drugname","standard","final", "num"]
-            df_merge = df_merge.ix[:,cols]
+            df_merge = df_merge.loc[:,cols]
             df_merge = df_merge.sort_values(by=["rack","drugname"])
 
             #df_merge = df_merge[  df_merge["rack"] == self.packmachine ] 
@@ -126,7 +126,7 @@ class OutputDataClass(MasterDataClass):
         else:
 
             cols = ["rack","drugname","standard","final"]
-            df_merge = df_merge.ix[:,cols]
+            df_merge = df_merge.loc[:,cols]
             df_merge = df_merge.sort_values(by=["rack","drugname"])
 
 
@@ -137,7 +137,7 @@ class OutputDataClass(MasterDataClass):
     def dataSummerize(self):
         
         cols = ["outdate","drugname","standard","instname","num"]
-        self.df_masterData = self.df_masterData.ix[:,cols]
+        self.df_masterData = self.df_masterData.loc[:,cols]
 
         self.df_masterData.reset_index(level=0,inplace=True)
         

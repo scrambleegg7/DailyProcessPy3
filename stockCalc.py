@@ -9,7 +9,8 @@ import pandas as pd
 
 import sys
 import os
-
+import shutil
+import glob
 
 
 def process(argv):
@@ -25,9 +26,9 @@ def process(argv):
     YYYYMMDD = myDateObj.strYYYYMMDD()
     YYYY = myDateObj.strYYYY()
 
-    print("length of arg:",len(argv)  )
-    for arg in argv:
-        print("arg:",arg)
+    #print("length of arg:",len(argv)  )
+    #for arg in argv:
+    #    print("arg:",arg)
 
     print("YYYYMMDD", YYYYMMDD)
     # main directory 
@@ -36,6 +37,9 @@ def process(argv):
 
     mainDir = u"\\\\EMSCR01\\ReceptyN\\TEXT\\"
     resultDir = u"\\\\EMSCR01\\ReceptyN\\TEXT\\result"
+    newresultTargetDir = u"C:\\ReceptyN\\TEXT\\result"
+    
+    wildcard_dailyoutput = os.path.join( resultDir, "daily*.csv"  )
     
     inventorylist = u"棚卸CSV%s*.CSV" % (YYYY)
     #udirPath = u"\\\\EMSCR01\\ReceptyN\\TEXT\\棚卸CSV%s*.CSV" % (YYYY)
@@ -84,6 +88,16 @@ def process(argv):
         df_merge = outputCls.mergeRackData(rackCls.getDrugCodeAndRackNo())
         result_dailyoutput = os.path.join( resultDir, "dailyTablets.csv"  )
         df_merge.to_csv( result_dailyoutput ,encoding='cp932',index=False)
+    
+
+    print("")
+    print("")
+    files = glob.glob(wildcard_dailyoutput)
+    print("All wildcard files under directory", files)
+    for file in files:
+        print("<<File -- %s -- is copying from %s into %s" % (file, resultDir, newresultTargetDir) )
+        shutil.copy(file,newresultTargetDir)
+
     
 def main(argv):
     

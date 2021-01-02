@@ -51,9 +51,9 @@ def processRack(d):
                         
     df_rack = df_rack.drop(["0","1","2","3","4","5","6","7",
                                 "8","9","10"],axis=1)
-    df_rack["standard"] = df_rack.ix[:,2].str.decode('cp932')
-    df_rack["drugname"] = df_rack.ix[:,1].str.decode('cp932')
-    df_rack["rack"] = df_rack.ix[:,0].str.decode('cp932')
+    df_rack["standard"] = df_rack.loc[:,2].str.decode('cp932')
+    df_rack["drugname"] = df_rack.loc[:,1].str.decode('cp932')
+    df_rack["rack"] = df_rack.loc[:,0].str.decode('cp932')
     df_rack["newcode"]= df_rack["drugname"] + df_rack["standard"]
     df_rack = df_rack.set_index("newcode")
 
@@ -91,8 +91,8 @@ def processMaster(d):
     df_master = df_master.drop(["3","4","6","8","9","10","11","12","13","14","15","16","17",
                                 "18","19","20","21","22","23","24","25"],axis=1)
     #print "column name after dropping unnecessary columns:\n", df_master.columns
-    df_master["standard"] = df_master.ix[:,3].str.decode('cp932')
-    df_master["drugname"] = df_master.ix[:,2].str.decode('cp932')
+    df_master["standard"] = df_master.loc[:,3].str.decode('cp932')
+    df_master["drugname"] = df_master.loc[:,2].str.decode('cp932')
     df_master["newcode"]= df_master["drugname"] + df_master["standard"]
     df_master = df_master.set_index("newcode")
     return df_master    
@@ -123,9 +123,9 @@ def process(d):
     df_out = df_out.drop(["0","5","7","8","10","12","14","15","16","17"],axis=1)
     #print "column name after dropping unnecessary columns:\n", df_out.columns
     
-    df_out["standard"] = df_out.ix[:,3].str.decode('cp932')
-    df_out["instname"] = df_out.ix[:,5].str.decode('cp932')
-    df_out["drugname"] = df_out.ix[:,6].str.decode('cp932')
+    df_out["standard"] = df_out.loc[:,3].str.decode('cp932')
+    df_out["instname"] = df_out.loc[:,5].str.decode('cp932')
+    df_out["drugname"] = df_out.loc[:,6].str.decode('cp932')
     df_out["outdate"] = pd.to_datetime(df_out["outdate"])    
     df_out["newcode"]= df_out["drugname"] + df_out["standard"]
     df_out = df_out.set_index("newcode")
@@ -153,7 +153,7 @@ def main(argv):
       
     cols = ["outdate","drugname","standard","instname","num"]
     df_ = stock_
-    df_ = df_.ix[:,cols]
+    df_ = df_.loc[:,cols]
 
     df_.reset_index(level=0,inplace=True)
     if tobusw == True:
@@ -185,10 +185,10 @@ def main(argv):
     stock_df = stock_df.join(rack_,how='inner')
     
     stock_df['num'] = stock_df['num'].fillna(0)
-    stock_df.loc[:,'final'] = pd.Series(stock_df.ix[:,0] - stock_df.ix[:,1])
+    stock_df.loc[:,'final'] = pd.Series(stock_df.loc[:,0] - stock_df.loc[:,1])
     stock_df = stock_df.reset_index(drop=True)
     cols = ["rack","drugname","standard","final"]
-    stock_df = stock_df.ix[:,cols]
+    stock_df = stock_df.loc[:,cols]
     stock_df = stock_df.sort(["rack","drugname"])
     
     
