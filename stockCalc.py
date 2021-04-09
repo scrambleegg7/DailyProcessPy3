@@ -38,6 +38,8 @@ def process(argv):
     mainDir = u"\\\\EMSCR01\\ReceptyN\\TEXT\\"
     resultDir = u"\\\\EMSCR01\\ReceptyN\\TEXT\\result"
     newresultTargetDir = u"C:\\ReceptyN\\TEXT\\result"
+    newresultTargetDirD = u"D:\\ReceptyN\\TEXT\\result"
+    
     
     wildcard_dailyoutput = os.path.join( resultDir, "daily*.csv"  )
     
